@@ -31,9 +31,6 @@ class AdminController extends Controller
         return view('dashboard.cv');
     }
 
-    public function projects()
-    {
-        return view('dashboard.projects');
-    }
+   
 
 }
