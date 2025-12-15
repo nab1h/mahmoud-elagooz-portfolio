@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Experience;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -25,9 +25,11 @@ class AdminController extends Controller
 
     public function cv()
     {
-        return view('dashboard.cv');
+        $experiences = Experience::orderBy('start_date', 'desc')->get();
+
+        return view('dashboard.cv', compact('experiences'));
     }
 
-   
+
 
 }
