@@ -11,10 +11,7 @@ class AdminController extends Controller
         return view('dashboard.index');
     }
 
-    public function linkes()
-    {
-        return view('dashboard.linkes');
-    }
+
 
     public function client()
     {
