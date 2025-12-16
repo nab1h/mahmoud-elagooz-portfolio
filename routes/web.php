@@ -3,6 +3,8 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProjectsController;
 use App\Http\Controllers\LinkesController;
+use App\Http\Controllers\ExperiencesController;
+use App\Http\Controllers\CvFileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -30,3 +32,16 @@ Route::delete('/projects/{project}',[ProjectsController::class, 'destroy'])->nam
 
 Route::get('/linkes',[LinkesController::class, 'index'])->name('admin.linkes');
 Route::patch('/linkes',[LinkesController::class, 'update'])->name('links.update');
+
+
+
+// ==================================================
+Route::resource('experiences', ExperiencesController::class)->names('experiences');
+
+Route::resource('admin/cv-file', CvFileController::class)->only(['index', 'store'])->names('cv_file');
+
+
+Route::get('admin/cv_files/download', [CvFileController::class, 'download'])
+    ->name('cv_file.download');
+
+    

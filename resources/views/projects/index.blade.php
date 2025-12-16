@@ -8,8 +8,9 @@
         {{ session('success') }}
       </div>
     @endif
-    <div class="d-flex justify-content-between align-items-center mb-3">
+    <div class="d-flex justify-content-between align-items-center mb-3 ">
       <h4>Projects</h4>
+  
       <form action="{{ route('projects.create') }}">
         <button class="btn btn-success"">
                           + Add Project
@@ -18,6 +19,7 @@
                       </div>
                     <br>
                     <br>
+                        <div class="row col-10 col-lg-11">
                   <div class=" table-responsive ">
                     <table class=" table table-bordered table-hover align-middle text-center">
           <thead class="table-dark">
@@ -69,7 +71,7 @@
                     <button type="submit" class="btn btn-danger btn-sm"
                       onclick="return confirm('هل أنت متأكد من حذف هذا المشروع؟')">Delete</button>
                   </form>
-
+</div>
                   <div style="clear: both;"></div>
                 </td>
               </tr>

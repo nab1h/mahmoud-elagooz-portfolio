@@ -23,12 +23,7 @@ class AdminController extends Controller
         return view('dashboard.login');
     }
 
-    public function cv()
-    {
-        $experiences = Experience::orderBy('start_date', 'desc')->get();
-
-        return view('dashboard.cv', compact('experiences'));
-    }
+    
 
 
 
