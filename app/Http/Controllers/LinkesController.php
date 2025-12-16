@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 use App\Models\Link;
-
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -14,13 +13,8 @@ class LinkesController extends Controller
         return view('linkes.index',compact('links'));
     }
 
-// في LinkesController.php
-
-// في LinkesController.php
-
 public function update(Request $request)
     {
-        // 1. قواعد التحقق (Validation) - تسمح بقيم فارغة لكنها تتطلب صيغة URL صحيحة إذا تم إدخال قيمة
         $validated = $request->validate([
             'facebook_url'  => 'nullable|max:255',
             'twitter_url'   => 'nullable|max:255',
@@ -41,15 +35,13 @@ public function update(Request $request)
             'phone_url'  => 'phone',
         ];
 
-        // 3. التحديث باستخدام updateOrCreate
         foreach ($validated as $field => $url) {
             if (isset($linkMap[$field])) {
                 $platformName = $linkMap[$field];
-                
-                // updateOrCreate: تقوم بالبحث باستخدام 'name' وتحديث/إنشاء 'url'
+            
                 Link::updateOrCreate(
-                    ['name' => $platformName], // شروط البحث
-                    ['url' => $url]           // البيانات للتحديث/الإنشاء
+                    ['name' => $platformName],   
+                    ['url' => $url]           
                 );
             }
         }
