@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Models\CvFile;
+use App\Models\Award;
+use App\Models\Skill;
 use App\Models\Experience;
 use Illuminate\Http\Request;
 
@@ -12,7 +14,9 @@ class ExperiencesController extends Controller
     {
         $experiences = Experience::orderBy('start_date', 'desc')->get();
         $cvFile = CvFile::latest()->first();
-        return view('experiences.index', compact('experiences', 'cvFile'));
+        $awards = Award::orderBy('date', 'desc')->get();
+        $skills = Skill::orderBy('name', 'asc')->get();
+        return view('experiences.index', compact('experiences', 'cvFile' ,'awards' , 'skills'));
     }
 
 

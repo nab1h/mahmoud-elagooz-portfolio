@@ -10,11 +10,11 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        // 🛑 هذا هو البناء الصحيح: Schema::create لمرة واحدة فقط
-        Schema::create('cv_files', function (Blueprint $table) {
+        Schema::create('awards', function (Blueprint $table) {
             $table->id();
-            $table->string('file_name');
-            $table->string('display_name')->nullable();
+            $table->string('name');
+            $table->string('issuer')->nullable(); 
+            $table->date('date');
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('cv_files');
+        Schema::dropIfExists('awards');
     }
 };

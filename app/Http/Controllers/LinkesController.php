@@ -28,10 +28,9 @@ public function update(Request $request)
             'pintrest_url'  => 'nullable|max:255',
             'wepsite_url'   => 'nullable|max:255',
             'linkedin_url'  => 'nullable|max:255',
+            'phone_url'  => 'nullable|max:11',
         ]);
 
-        // 2. مصفوفة الربط - يجب أن تتطابق هذه القيم تمامًا مع عمود 'name' في جدول 'links'
-        // نستخدم الأخطاء الإملائية الموجودة في قاعدة بياناتك (twiter, wepsite) لضمان العمل.
         $linkMap = [
             'facebook_url'  => 'facebook',
             'twitter_url'   => 'twiter',  
@@ -39,6 +38,7 @@ public function update(Request $request)
             'pintrest_url'  => 'pintrest',
             'wepsite_url'   => 'wepsite', 
             'linkedin_url'  => 'linkedin',
+            'phone_url'  => 'phone',
         ];
 
         // 3. التحديث باستخدام updateOrCreate

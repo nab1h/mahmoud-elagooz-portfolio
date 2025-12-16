@@ -83,6 +83,14 @@
 					</div>
 				</div>
 				<br>
+				<div class="mb-4">
+					<label for="phone_url" class="form-label">Phone Number</label>
+					<div class="input-group">
+						<input id="phone_url" value="{{ getLinkUrl($links, 'phone') }}" type="text" class="form-control"
+							name="phone_url" placeholder="your phone number" />
+					</div>
+				</div>
+				<br>
 				<div class="mt-5 d-grid">
 					<button type="submit" class="btn btn-success btn-lg">Save All Links</button>
 				</div>

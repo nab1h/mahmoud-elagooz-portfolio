@@ -4,6 +4,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProjectsController;
 use App\Http\Controllers\LinkesController;
 use App\Http\Controllers\ExperiencesController;
+use App\Http\Controllers\SkillController;
+use App\Http\Controllers\AwardController;
 use App\Http\Controllers\CvFileController;
 use Illuminate\Support\Facades\Route;
 
@@ -40,8 +42,14 @@ Route::resource('experiences', ExperiencesController::class)->names('experiences
 
 Route::resource('admin/cv-file', CvFileController::class)->only(['index', 'store'])->names('cv_file');
 
+// ==============================================
 
 Route::get('admin/cv_files/download', [CvFileController::class, 'download'])
     ->name('cv_file.download');
 
-    
+// ==============================================
+Route::resource('admin/awards', AwardController::class)->names('awards');
+
+// ==============================================
+
+Route::resource('admin/skills', SkillController::class)->names('skills');
