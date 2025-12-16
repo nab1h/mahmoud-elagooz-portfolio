@@ -7,6 +7,7 @@ use App\Http\Controllers\ExperiencesController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\StatisticController;
 use App\Http\Controllers\AwardController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\CvFileController;
 use Illuminate\Support\Facades\Route;
@@ -60,3 +61,7 @@ Route::resource('admin/statistics', StatisticController::class)->names('statisti
 
 
 Route::resource('admin/testimonials', TestimonialController::class)->names('testimonials');
+
+
+Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
+Route::put('/settings', [SettingController::class, 'update'])->name('settings.update');
