@@ -27,7 +27,143 @@
     <link rel="manifest" href="{{ asset('them/site.webmanifest') }}">
 
 </head>
+<style>
+    :root {
+        --primary: #2563eb;
+        --dark: #1e293b;
+        --gray: #64748b;
+        --bg: #f1f5f9;
+        --radius: 20px;
+    }
 
+    .projects-wrapper {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        /* كرتين في اللارج */
+        gap: 30px;
+        padding: 40px 5%;
+        background-color: var(--bg);
+    }
+
+    /* 📱 تعديل الموبايل والميديم: كرت واحد فقط */
+    @media (max-width: 991px) {
+        .projects-wrapper {
+            grid-template-columns: 1fr;
+            padding: 20px 15px;
+        }
+    }
+
+    .modern-card {
+        background: #fff;
+        border-radius: var(--radius);
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease;
+        position: relative;
+        touch-action: pan-y;
+        /* بيحسن سلاسة السحب */
+    }
+
+    .card-visuals {
+        position: relative;
+        height: 450px;
+        /* الارتفاع اللي عجبك */
+        background: #000;
+        overflow: hidden;
+    }
+
+    .card-visuals img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: none;
+        pointer-events: none;
+        /* عشان الصورة متعكسش السحب */
+    }
+
+    .card-visuals img.active {
+        display: block;
+    }
+
+    /* إخفاء الأسهم في الموبايل عشان نعتمد على السحب */
+    .nav-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.8);
+        border: none;
+        width: 5px;
+        height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    @media (max-width: 768px) {
+        .nav-btn {
+            display: none;
+        }
+    }
+
+    .prev {
+        left: 15px;
+        padding: 20px 20px
+    }
+
+    .next {
+        right: 15px;
+        padding: 20px 20px
+    }
+
+    .card-content {
+        padding: 25px;
+    }
+
+    .content-top {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 15px;
+    }
+
+    .brand-logo-container {
+        width: 80px;
+        height: 80px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .brand-logo-container img {
+        max-width: 80%;
+    }
+
+    .project-name-display {
+        font-size: 1.3rem;
+        font-weight: 800;
+        margin: 0;
+    }
+
+    .brand-name-display {
+        color: var(--primary);
+        font-weight: 600;
+        font-size: 0.9rem;
+    }
+
+    .project-info-text {
+        font-size: 1.1rem;
+        /* الحجم اللي طلبته عشان يكون واضح */
+        color: var(--gray);
+        line-height: 1.6;
+        border-top: 1px solid #eee;
+        padding-top: 15px;
+    }
+</style>
 
 <body id="top">
 
@@ -283,7 +419,6 @@
                                 </li>
                             </ul>
                         </div> <!--end s-about__block -->
-
                         <div class="grid-list-items__item s-about__block">
                             <h4 class="s-about__block-title">Skills</h4>
 
@@ -308,16 +443,10 @@
                                 </li>
                             </ul>
                         </div> <!--end s-about__block -->
-
                     </div> <!-- grid-list-items -->
-
                 </div> <!--end column -->
             </div> <!--end s-about__content -->
-
         </section> <!-- end s-about -->
-
-
-
         <!-- # works
         ================================================== -->
         <section id="works" class="s-works target-section">
@@ -330,110 +459,138 @@
                 </div>
             </div>
 
-            <div class="row folio-entries">
+            <div class="projects-wrapper">
+                <div class="modern-card" ontouchstart="handleTouchStart(event)"
+                    ontouchend="handleTouchEnd(event, this)">
 
-    <div class="column entry">
-        <a href="{{ asset('them/images/folio/gallery/g-turban.jpg') }}" class="entry__link glightbox"
-            data-glightbox="title: White Knit Cap; description: .entry__desc-01">
-            <div class="entry__thumb">
-                <img src="{{ asset('them/images/folio/white_turban.jpg') }}"
-                    srcset="{{ asset('them/images/folio/white_turban.jpg') }} 1x, {{ asset('them/images/folio/white_turban@2x.jpg') }} 2x" alt="">
-            </div>
-            <div class="entry__info">
-                <h4 class="entry__title">White Knit Cap</h4>
-                <div class="entry__cat">Frontend Design</div>
-            </div>
-        </a>
-        <div class="glightbox-desc entry__desc-01">
-            </div>
-    </div>
-    <div class="column entry">
-        <a href="{{ asset('them/images/folio/gallery/g-woodcraft.jpg') }}" class="entry__link glightbox"
-            data-glightbox="title: WoodCraft; description: .entry__desc-02">
-            <div class="entry__thumb">
-                <img src="{{ asset('them/images/folio/woodcraft.jpg') }}"
-                    srcset="{{ asset('them/images/folio/woodcraft.jpg') }} 1x, {{ asset('them/images/folio/woodcraft@2x.jpg') }} 2x" alt="">
-            </div>
-            <div class="entry__info">
-                <h4 class="entry__title">WoodCraft</h4>
-                <div class="entry__cat">Product Design</div>
-            </div>
-        </a>
-        <div class="glightbox-desc entry__desc-02">
-            </div>
-    </div> {{-- الكرت الثالث --}}
-    <div class="column entry">
-        <a href="{{ asset('them/images/folio/gallery/g-tulips.jpg') }}" class="entry__link glightbox"
-            data-glightbox="title: Caffeine & Tulips; description: .entry__desc-03">
-            <div class="entry__thumb">
-                <img src="{{ asset('them/images/folio/caffeine_and_tulips.jpg') }}"
-                    srcset="{{ asset('them/images/folio/caffeine_and_tulips.jpg') }} 1x, {{ asset('them/images/folio/caffeine_and_tulips@2x.jpg') }} 2x"
-                    alt="">
-            </div>
-            <div class="entry__info">
-                <h4 class="entry__title">Caffeine & Tulips</h4>
-                <div class="entry__cat">Brand Identity</div>
-            </div>
-        </a>
-        <div class="glightbox-desc entry__desc-03">
-            </div>
-    </div> 
-    <div class="column entry">
-        <a href="{{ asset('them/images/folio/gallery/g-grayscale.jpg') }}" class="entry__link glightbox"
-            data-glightbox="title: Grayscale; description: .entry__desc-04">
-            <div class="entry__thumb">
-                <img src="{{ asset('them/images/folio/grayscale.jpg') }}"
-                    srcset="{{ asset('them/images/folio/grayscale.jpg') }} 1x, {{ asset('them/images/folio/grayscale@2x.jpg') }} 2x" alt="">
-            </div>
-            <div class="entry__info">
-                <h4 class="entry__title">Grayscale</h4>
-                <div class="entry__cat">Product Design</div>
-            </div>
-        </a>
-        <div class="glightbox-desc entry__desc-04">
-            </div>
-    </div> 
-    <div class="column entry">
-        <a href="{{ asset('them/images/folio/gallery/g-lamp.jpg') }}" class="entry__link glightbox"
-            data-glightbox="title: The Lamp; description: .entry__desc-05">
-            <div class="entry__thumb">
-                <img src="{{ asset('them/images/folio/lamp.jpg') }}"
-                    srcset="{{ asset('them/images/folio/lamp.jpg') }} 1x, {{ asset('them/images/folio/lamp@2x.jpg') }} 2x" alt="">
-            </div>
-            <div class="entry__info">
-                <h4 class="entry__title">The Lamp</h4>
-                <div class="entry__cat">Brand Identity</div>
-            </div>
-        </a>
-        <div class="glightbox-desc entry__desc-05">
-            </div>
-    </div> 
-    <div class="column entry">
-        <a href="{{ asset('them/images/folio/gallery/g-tropical.jpg') }}" class="entry__link glightbox"
-            data-glightbox="title: Tropical; description: .entry__desc-06">
-            <div class="entry__thumb">
-                <img src="{{ asset('them/images/folio/tropical.jpg') }}"
-                    srcset="{{ asset('them/images/folio/tropical.jpg') }} 1x, {{ asset('them/images/folio/tropical@2x.jpg') }} 2x" alt="">
-            </div>
-            <div class="entry__info">
-                            <h4 class="entry__title">Tropical</h4>
-                            <div class="entry__cat">Frontend Design</div>
+                    <div class="card-visuals">
+                        <button class="nav-btn prev" onclick="slide(this, -1)">&#10094;</button>
+                        <img src="{{ asset('them/images/folio/grayscale@2x.jpg') }}" class="active">
+                        <img src="{{ asset('them/images/folio/caffeine_and_tulips.jpg') }}">
+                        <img src="{{ asset('them/images/folio/grayscale@2x.jpg') }}">
+                        <button class="nav-btn next" onclick="slide(this, 1)">&#10095;</button>
+                    </div>
+
+                    <div class="card-content">
+                        <div class="content-top">
+                            <div class="brand-logo-container">
+                                <img src="{{ asset('them/images/folio/white_turban@2x.jpg') }}">
+                            </div>
+                            <div class="text-stack">
+                                <h3 class="project-name-display">Project Title</h3>
+                                <span class="brand-name-display">Brand Name</span>
+                            </div>
                         </div>
-                    </a>
-
-                    <div class="glightbox-desc entry__desc-06">
-                        <p>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
-                        Inventore ipsum iste soluta fugiat, impedit illum ducimus 
-                        deleniti facilis ab, tempora non! Nisi, tempora provident.
-                        <a href="https://www.behance.net/">Project Link</a>.
+                        <p class="project-info-text">
+                            النص هنا واضح ومريح للعين، والكرت بياخد وضعه في الشاشة.
                         </p>
                     </div>
-                </div> <!-- entry --> 
+                </div>
+                <div class="modern-card" ontouchstart="handleTouchStart(event)"
+                    ontouchend="handleTouchEnd(event, this)">
 
-            </div> <!-- folio entries -->
+                    <div class="card-visuals">
+                        <button class="nav-btn prev" onclick="slide(this, -1)">&#10094;</button>
+                        <img src="{{ asset('them/images/folio/grayscale@2x.jpg') }}" class="active">
+                        <img src="{{ asset('them/images/folio/caffeine_and_tulips.jpg') }}">
+                        <img src="{{ asset('them/images/folio/grayscale@2x.jpg') }}">
+                        <button class="nav-btn next" onclick="slide(this, 1)">&#10095;</button>
+                    </div>
+
+                    <div class="card-content">
+                        <div class="content-top">
+                            <div class="brand-logo-container">
+                                <img src="{{ asset('them/images/folio/white_turban@2x.jpg') }}">
+                            </div>
+                            <div class="text-stack">
+                                <h3 class="project-name-display">Project Title</h3>
+                                <span class="brand-name-display">Brand Name</span>
+                            </div>
+                        </div>
+                        <p class="project-info-text">
+                            النص هنا واضح ومريح للعين، والكرت بياخد وضعه في الشاشة.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="modern-card" ontouchstart="handleTouchStart(event)"
+                    ontouchend="handleTouchEnd(event, this)">
+
+                    <div class="card-visuals">
+                        <button class="nav-btn prev" onclick="slide(this, -1)">&#10094;</button>
+                        <img src="{{ asset('them/images/folio/grayscale@2x.jpg') }}" class="active">
+                        <img src="{{ asset('them/images/folio/caffeine_and_tulips.jpg') }}">
+                        <img src="{{ asset('them/images/folio/grayscale@2x.jpg') }}">
+                        <button class="nav-btn next" onclick="slide(this, 1)">&#10095;</button>
+                    </div>
+
+                    <div class="card-content">
+                        <div class="content-top">
+                            <div class="brand-logo-container">
+                                <img src="{{ asset('them/images/folio/white_turban@2x.jpg') }}">
+                            </div>
+                            <div class="text-stack">
+                                <h3 class="project-name-display">Project Title</h3>
+                                <span class="brand-name-display">Brand Name</span>
+                            </div>
+                        </div>
+                        <p class="project-info-text">
+                            النص هنا واضح ومريح للعين، والكرت بياخد وضعه في الشاشة.
+                        </p>
+                    </div>
+                </div>
+                <div class="modern-card" ontouchstart="handleTouchStart(event)"
+                    ontouchend="handleTouchEnd(event, this)">
+
+                    <div class="card-visuals">
+                        <button class="nav-btn prev" onclick="slide(this, -1)">&#10094;</button>
+                        <img src="{{ asset('them/images/folio/grayscale@2x.jpg') }}" class="active">
+                        <img src="{{ asset('them/images/folio/caffeine_and_tulips.jpg') }}">
+                        <img src="{{ asset('them/images/folio/grayscale@2x.jpg') }}">
+                        <button class="nav-btn next" onclick="slide(this, 1)">&#10095;</button>
+                    </div>
+
+                    <div class="card-content">
+                        <div class="content-top">
+                            <div class="brand-logo-container">
+                                <img src="{{ asset('them/images/folio/white_turban@2x.jpg') }}">
+                            </div>
+                            <div class="text-stack">
+                                <h3 class="project-name-display">Project Title</h3>
+                                <span class="brand-name-display">Brand Name</span>
+                            </div>
+                        </div>
+                        <p class="project-info-text">
+                            النص هنا واضح ومريح للعين، والكرت بياخد وضعه في الشاشة.
+                        </p>
+                    </div>
+                </div>
+            </div>
 
 
+            <script>
+                let xDown = null;
+                function handleTouchStart(evt) { xDown = evt.touches[0].clientX; }
+
+                function handleTouchEnd(evt, card) {
+                    if (!xDown) return;
+                    let xUp = evt.changedTouches[0].clientX;
+                    let xDiff = xDown - xUp;
+                    if (Math.abs(xDiff) > 50) {
+                        slide(card.querySelector('.nav-btn'), xDiff > 0 ? 1 : -1);
+                    }
+                    xDown = null;
+                }
+
+                function slide(btn, dir) {
+                    const container = btn.parentElement;
+                    const imgs = container.querySelectorAll('img');
+                    let curr = Array.from(imgs).findIndex(i => i.classList.contains('active'));
+                    imgs[curr].classList.remove('active');
+                    curr = (curr + dir + imgs.length) % imgs.length;
+                    imgs[curr].classList.add('active');
+                }
+            </script>
             <div class="row s-testimonials">
                 <div class="column xl-12">
 
@@ -445,6 +602,7 @@
 
                             <div class="s-testimonials__slide swiper-slide">
                                 <div class="s-testimonials__author">
+                                    <img src="images/avatars/user-02.jpg" alt="Author image" class="s-testimonials__avatar">
                                     <cite class="s-testimonials__cite">
                                         <strong>John Rockefeller</strong>
                                         <span>Standard Oil Co.</span>
@@ -459,6 +617,7 @@
             
                             <div class="s-testimonials__slide swiper-slide">
                                 <div class="s-testimonials__author">
+                                    <img src="images/avatars/user-03.jpg" alt="Author image" class="s-testimonials__avatar">
                                     <cite class="s-testimonials__cite">
                                         <strong>Andrew Carnegie</strong>
                                         <span>Carnegie Steel Co.</span>
@@ -473,6 +632,7 @@
             
                             <div class="s-testimonials__slide swiper-slide">
                                 <div class="s-testimonials__author">
+                                    <img src="images/avatars/user-01.jpg" alt="Author image" class="s-testimonials__avatar">
                                     <cite class="s-testimonials__cite">
                                         <strong>John Morgan</strong>
                                         <span>JP Morgan & Co.</span>
@@ -501,8 +661,11 @@
                             </div> <!-- end s-testimonials__slide -->
         
                         </div> <!-- end swiper-wrapper -->
+    
                         <div class="swiper-pagination"></div>
+    
                     </div> <!-- end swiper-container -->
+    
                 </div> <!-- end column -->
             </div> <!-- end s-testimonials -->
         </section> <!-- end s-works -->
