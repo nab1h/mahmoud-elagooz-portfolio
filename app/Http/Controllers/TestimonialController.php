@@ -23,11 +23,13 @@ class TestimonialController extends Controller
             'job_title' => 'nullable|string|max:255',
             'message' => 'required|string',
         ]);
-        
+
         $validated['is_favorite'] = $request->has('is_favorite');
 
         Testimonial::create($validated);
-        
+        if ($request->ajax() || $request->wantsJson()) {
+            return response()->json(['success' => 'تم استلام رأيك بنجاح!']);
+        }
         return redirect()->route('statistics.index')
             ->with('success', 'تم إضافة رأي العميل بنجاح.');
     }
@@ -44,7 +46,7 @@ class TestimonialController extends Controller
             'job_title' => 'nullable|string|max:255',
             'message' => 'required|string',
         ]);
-        
+
         $validated['is_favorite'] = $request->has('is_favorite');
 
         $testimonial->update($validated);
