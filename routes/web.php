@@ -8,13 +8,12 @@ use App\Http\Controllers\SkillController;
 use App\Http\Controllers\StatisticController;
 use App\Http\Controllers\AwardController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\CvFileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('hero');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
 

@@ -18,11 +18,9 @@
     @csrf
     @method('PUT')
     
-    {{-- 1. حقل محتوى الصفحة الرئيسية (Key: home) --}}
     <div class="mb-4">
         <label for="home" class="form-label fw-bold">1. Home Page Content</label>
-        {{-- 🛑 اسم الحقل هو 'home' وقيمته هي $settings['home'] 🛑 --}}
-        <textarea class="form-control" id="home" name="home" rows="4">{{ $settings['home'] ?? '' }}</textarea>
+        <textarea class="form-control" id="home" name="home" rows="4">@isset($settings['home']){{ $settings['home'] }}@endisset</textarea>
         <small class="form-text text-muted">The main text displayed on the Home page.</small>
         @error('home')<div class="text-danger">{{ $message }}</div>@enderror
     </div>
@@ -32,8 +30,7 @@
     {{-- 2. حقل محتوى صفحة من نحن (Key: about) --}}
     <div class="mb-4">
         <label for="about" class="form-label fw-bold">2. About Page Content</label>
-        {{-- 🛑 اسم الحقل هو 'about' وقيمته هي $settings['about'] 🛑 --}}
-        <textarea class="form-control" id="about" name="about" rows="6">{{ $settings['about'] ?? '' }}</textarea>
+        <textarea class="form-control" id="about" name="about" rows="6">@isset($settings['about']){{ $settings['about'] }}@endisset</textarea>
         <small class="form-text text-muted">The main text/biography on the About Us page.</small>
         @error('about')<div class="text-danger">{{ $message }}</div>@enderror
     </div>
@@ -44,7 +41,7 @@
     <div class="mb-4">
         <label for="footer" class="form-label fw-bold">3. Footer Content (Address/Text)</label>
         {{-- 🛑 تم تحويله إلى <textarea> واسم الحقل هو 'footer' 🛑 --}}
-        <textarea class="form-control" id="footer" name="footer" rows="3">{{ $settings['footer'] ?? '' }}</textarea>
+        <textarea class="form-control" id="footer" name="footer" rows="3">@isset($settings['footer']){{ $settings['footer'] }}@endisset</textarea>
         <small class="form-text text-muted">The main text/address displayed in the footer.</small>
         @error('footer')<div class="text-danger">{{ $message }}</div>@enderror
     </div>

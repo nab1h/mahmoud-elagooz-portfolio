@@ -194,9 +194,7 @@
 
             <div class="column xl-6 md-12 s-footer__block s-footer__about">
                 <p class="attention-getter">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas illum quasi facere libero,
-                    fugiat laboriosam possimus amet consectetur adipisicing elit reprehenderit eveniet tempore
-                    quisquam ipsa id esse. Facere ratione dignissimos.
+                    {{ $settings['footer'] ?? '' }}
                 </p>
             </div> <!-- end section-footer__about -->
 
@@ -205,18 +203,34 @@
                     <div class="column xl-4 lg-5 md-6 tab-12">
                         <h5>Follow Me</h5>
                         <ul class="link-list">
-                            <li><a href="#0">Facebook</a></li>
-                            <li><a href="#0">Twitter</a></li>
-                            <li><a href="#0">Instagram</a></li>
-                            <li><a href="#0">Dribbble</a></li>
-                            <li><a href="https://styleshout.com/go/hostinger/">Hostinger</a></li>
+                            <li><a href="{{ $links->where('name', 'facebook')->first()->url ?? '#' }}">Facebook</a></li>
+                            <li><a href="{{ $links->where('name', 'twiter')->first()->url ?? '#' }}">Twitter</a></li>
+                            <li><a href="{{ $links->where('name', 'instagram')->first()->url ?? '#' }}">Instagram</a></li>
+                            <li><a href="{{ $links->where('name', 'wepsite')->first()->url ?? '#' }}">Dribbble</a></li>
+                            <li><a href="{{ $links->where('name', 'linkedin')->first()->url ?? '#' }}">Linkedin</a></li>
                         </ul>
                     </div>
-                    <div class="column xl-6 md-6 tab-12">
+                    <div class="column xl-7 md-6 tab-12">
                         <h5>Contact Me</h5>
                         <ul class="link-list">
-                            <li><a href="mailto:#0">sayhello@hudson.com</a></li>
-                            <li><a href="tel:+1975432345">+197 543 2345</a></li>
+
+                            <li>
+    @php 
+        $siteUrl = $links->where('name', 'website')->first()->url ?? $links->where('name', 'wepsite')->first()->url ?? '';
+    @endphp
+
+    @if($siteUrl)
+        <a href="{{ str_starts_with($siteUrl, 'http') ? $siteUrl : 'https://' . $siteUrl }}" target="_blank">
+            {{ $siteUrl }}
+        </a>
+    @endif
+</li>
+                                                    <li>
+                                                        @php 
+                                                            $phone = $links->where('name', 'phone')->first()->url ?? ''; 
+                                                        @endphp
+        <a href="tel:+2{{ $phone }}">+2{{ $phone }}</a>
+    </li>
                         </ul>
                     </div>
                 </div>
@@ -228,12 +242,12 @@
         <div class="row s-footer__contact-form">
             <div class="column xl-12">
                 <div class="form-field">
-                    <input type="text" id="contactName" name="name" class="u-fullwidth" placeholder="Your Name" style="color: white !important;"
-                        required>
+                    <input type="text" id="contactName" name="name" class="u-fullwidth" placeholder="Your Name"
+                        style="color: white !important;" required>
                 </div>
                 <div class="form-field">
-                    <textarea id="contactMessage" name="message" class="u-fullwidth" placeholder="Your Message" style="color: white !important;"
-                        required></textarea>
+                    <textarea id="contactMessage" name="message" class="u-fullwidth" placeholder="Your Message"
+                        style="color: white !important;" required></textarea>
                 </div>
             </div>
         </div>
@@ -244,7 +258,7 @@
             </div>
 
             <div class="column xl-6 tab-12">
-                <a href="#0" class="btn btn--stroke btn--large u-fullwidth">Get My CV</a>
+                <a href="{{ route('cv_file.download') }}" class="btn btn--stroke btn--large u-fullwidth">Get My CV</a>
             </div>
         </div>
 
@@ -268,7 +282,7 @@
                     body: JSON.stringify({
                         name: name,
                         message: message,
-                        job_title: "Client" 
+                        job_title: "Client"
                     })
                 })
                     .then(async response => {
@@ -293,7 +307,7 @@
             <div class="column xl-6 lg-12">
                 <ul class="s-footer__social social-list">
                     <li>
-                        <a href="#0">
+                        <a href="{{ $links->where('name', 'facebook')->first()->url ?? '#0' }}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:">
                                 <path
@@ -304,7 +318,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#0">
+                        <a href="{{ $links->where('name', 'twiter')->first()->url ?? '#0' }}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:">
                                 <path
@@ -315,7 +329,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#0">
+                        <a href="{{ $links->where('name', 'instagram')->first()->url ?? '#0' }}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:">
                                 <path
@@ -330,7 +344,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#0">
+                        <a href="{{ $links->where('name', 'wepsite')->first()->url ?? '#' }}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
                                 <path

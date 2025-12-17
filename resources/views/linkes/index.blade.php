@@ -76,13 +76,14 @@
 
 				<br>
 				<div class="mb-4">
-					<label for="twitter_url" class="form-label">Twitter URL</label>
+					<label for="twitter_url" class="form-label">Linkedin URL</label>
 					<div class="input-group">
 						<input id="linkedin_url" value="{{ getLinkUrl($links, 'linkedin') }}" type="text" class="form-control"
 							name="linkedin_url" placeholder="https://linkedin.com/username" />
 					</div>
 				</div>
 				<br>
+			
 				<div class="mb-4">
 					<label for="phone_url" class="form-label">Phone Number</label>
 					<div class="input-group">
