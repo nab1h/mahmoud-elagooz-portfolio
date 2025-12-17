@@ -25,7 +25,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('them/favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('them/favicon-16x16.png') }}">
     <link rel="manifest" href="{{ asset('them/site.webmanifest') }}">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
 <style>
     :root {
@@ -130,8 +130,8 @@
     }
 
     .brand-logo-container {
-        width: 80px;
-        height: 80px;
+        width: 100px;
+        height: 100px;
         border-radius: 12px;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         display: flex;
@@ -140,29 +140,35 @@
     }
 
     .brand-logo-container img {
-        max-width: 80%;
+        max-width: 100%;
+        max-height: 100%;
     }
 
     .project-name-display {
-        font-size: 1.3rem;
-        font-weight: 800;
+        font-size: 1.8rem;
+        font-weight: 900;
         margin: 0;
     }
 
     .brand-name-display {
         color: var(--primary);
-        font-weight: 600;
-        font-size: 0.9rem;
+        font-weight: 400;
+        font-size: 1.6rem;
     }
 
     .project-info-text {
-        font-size: 1.1rem;
+        font-size: 1.60rem;
         /* الحجم اللي طلبته عشان يكون واضح */
         color: var(--gray);
         line-height: 1.6;
         border-top: 1px solid #eee;
         padding-top: 15px;
     }
+    .form-field textarea {
+        min-height: 10px;
+        resize: vertical;
+    }
+</style>
 </style>
 
 <body id="top">
@@ -595,77 +601,88 @@
                 <div class="column xl-12">
 
                     <h3 class="s-testimonials__header">Hear it from My Happy Clients</h3>
-    
+
                     <div class="swiper-container s-testimonials__slider">
-    
+
                         <div class="swiper-wrapper">
 
                             <div class="s-testimonials__slide swiper-slide">
                                 <div class="s-testimonials__author">
-                                    <img src="images/avatars/user-02.jpg" alt="Author image" class="s-testimonials__avatar">
+                                    <img src="images/avatars/user-02.jpg" alt="Author image"
+                                        class="s-testimonials__avatar">
                                     <cite class="s-testimonials__cite">
                                         <strong>John Rockefeller</strong>
                                         <span>Standard Oil Co.</span>
                                     </cite>
                                 </div>
                                 <p>
-                                Molestiae incidunt consequatur quis ipsa autem nam sit enim magni. Voluptas tempore rem. 
-                                Explicabo a quaerat sint autem dolore ducimus ut consequatur neque. Nisi dolores quaerat fuga rem nihil nostrum.
-                                Laudantium quia consequatur molestias.
+                                    Molestiae incidunt consequatur quis ipsa autem nam sit enim magni. Voluptas tempore
+                                    rem.
+                                    Explicabo a quaerat sint autem dolore ducimus ut consequatur neque. Nisi dolores
+                                    quaerat fuga rem nihil nostrum.
+                                    Laudantium quia consequatur molestias.
                                 </p>
                             </div> <!-- end s-testimonials__slide -->
-            
+
                             <div class="s-testimonials__slide swiper-slide">
                                 <div class="s-testimonials__author">
-                                    <img src="images/avatars/user-03.jpg" alt="Author image" class="s-testimonials__avatar">
+                                    <img src="images/avatars/user-03.jpg" alt="Author image"
+                                        class="s-testimonials__avatar">
                                     <cite class="s-testimonials__cite">
                                         <strong>Andrew Carnegie</strong>
                                         <span>Carnegie Steel Co.</span>
                                     </cite>
                                 </div>
                                 <p>
-                                Excepturi nam cupiditate culpa doloremque deleniti repellat. Veniam quos repellat voluptas animi adipisci.
-                                Nisi eaque consequatur. Voluptatem dignissimos ut ducimus accusantium perspiciatis.
-                                Quasi voluptas eius distinctio. Atque eos maxime.
+                                    Excepturi nam cupiditate culpa doloremque deleniti repellat. Veniam quos repellat
+                                    voluptas animi adipisci.
+                                    Nisi eaque consequatur. Voluptatem dignissimos ut ducimus accusantium perspiciatis.
+                                    Quasi voluptas eius distinctio. Atque eos maxime.
                                 </p>
                             </div> <!-- end s-testimonials__slide -->
-            
+
                             <div class="s-testimonials__slide swiper-slide">
                                 <div class="s-testimonials__author">
-                                    <img src="images/avatars/user-01.jpg" alt="Author image" class="s-testimonials__avatar">
+                                    <img src="images/avatars/user-01.jpg" alt="Author image"
+                                        class="s-testimonials__avatar">
                                     <cite class="s-testimonials__cite">
                                         <strong>John Morgan</strong>
                                         <span>JP Morgan & Co.</span>
                                     </cite>
                                 </div>
                                 <p>
-                                Repellat dignissimos libero. Qui sed at corrupti expedita voluptas odit. Nihil ea quia nesciunt. Ducimus aut sed ipsam.  
-                                Autem eaque officia cum exercitationem sunt voluptatum accusamus. Quasi voluptas eius distinctio.
-                                Voluptatem dignissimos ut.
+                                    Repellat dignissimos libero. Qui sed at corrupti expedita voluptas odit. Nihil ea
+                                    quia nesciunt. Ducimus aut sed ipsam.
+                                    Autem eaque officia cum exercitationem sunt voluptatum accusamus. Quasi voluptas
+                                    eius distinctio.
+                                    Voluptatem dignissimos ut.
                                 </p>
                             </div> <!-- end s-testimonials__slide -->
-    
+
                             <div class="s-testimonials__slide swiper-slide">
                                 <div class="s-testimonials__author">
-                                    <img src="images/avatars/user-06.jpg" alt="Author image" class="s-testimonials__avatar">
+                                    <img src="images/avatars/user-06.jpg" alt="Author image"
+                                        class="s-testimonials__avatar">
                                     <cite class="s-testimonials__cite">
                                         <strong>Henry Ford</strong>
                                         <span>Ford Motor Co.</span>
                                     </cite>
                                 </div>
                                 <p>
-                                Nunc interdum lacus sit amet orci. Vestibulum dapibus nunc ac augue. Fusce vel dui. In ac felis 
-                                quis tortor malesuada pretium. Curabitur vestibulum aliquam leo. Qui sed at corrupti expedita voluptas odit. 
-                                Nihil ea quia nesciunt. Ducimus aut sed ipsam.
+                                    Nunc interdum lacus sit amet orci. Vestibulum dapibus nunc ac augue. Fusce vel dui.
+                                    In ac felis
+                                    quis tortor malesuada pretium. Curabitur vestibulum aliquam leo. Qui sed at corrupti
+                                    expedita voluptas odit.
+                                    Nihil ea quia nesciunt. Ducimus aut sed ipsam.
                                 </p>
                             </div> <!-- end s-testimonials__slide -->
-        
+
                         </div> <!-- end swiper-wrapper -->
-    
+
                         <div class="swiper-pagination"></div>
-    
+
                     </div> <!-- end swiper-container -->
-    
+
                 </div> <!-- end column -->
             </div> <!-- end s-testimonials -->
         </section> <!-- end s-works -->
@@ -780,17 +797,30 @@
             </div> <!-- end section-footer__content -->
 
 
-            <div class="row s-footer__buttons">
+            <div class="row s-footer__contact-form">
+                <div class="column xl-12">
+                    <div class="form-field">
+                        <input type="text" id="contactName" name="name" class="u-fullwidth" placeholder="Your Name"
+                            required>
+                    </div>
+                    <div class="form-field">
+                        <textarea id="contactMessage" name="message" class="u-fullwidth" placeholder="Your Message"
+                            required></textarea>
+                    </div>
+                </div>
+            </div>
 
+            <div class="row s-footer__buttons">
                 <div class="column xl-6 tab-12">
-                    <a href="mailto:#0" class="btn btn--primary btn--large u-fullwidth">Message Me</a>
+                    <button id="submitAjax" class="btn btn--primary btn--large u-fullwidth">Send Message</button>
                 </div>
 
                 <div class="column xl-6 tab-12">
                     <a href="#0" class="btn btn--stroke btn--large u-fullwidth">Get My CV</a>
                 </div>
+            </div>
 
-            </div> <!-- end section-footer__buttons -->
+            <div id="formResponse" style="margin-top: 15px; text-align: center; display: none;"></div>
 
             <div class="row s-footer__bottom">
 
@@ -849,9 +879,9 @@
 
                 <div class="column xl-6 lg-12">
                     <p class="ss-copyright">
-                        <span>© Copyright Hudson 2023</span>
-                        <span>Design by <a href="https://styleshout.com/">StyleShout</a> Distribution by <a
-                                href="https://themewagon.com">ThemeWagon</a></span>
+                        <span>© Copyright Hudson 2026</span>
+                        <span>Design by <a href="https://nabih-alashmawy.online">Nabih Alashmawy</a> Distribution by <a
+                                href="https://nabih-alashmawy.online">Nabih Alashmawy</a></span>
                     </p>
                 </div>
 
@@ -877,6 +907,7 @@
     <!-- Java Script
     ================================================== -->
     <script src="{{ asset('them/js/plugins.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="{{ asset('them/js/main.js') }}"></script>
 
 </body>
