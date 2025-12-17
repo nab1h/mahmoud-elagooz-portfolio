@@ -27,7 +27,7 @@ class TestimonialController extends Controller
         $validated['is_favorite'] = $request->has('is_favorite');
 
         Testimonial::create($validated);
-
+        
         return redirect()->route('statistics.index')
             ->with('success', 'تم إضافة رأي العميل بنجاح.');
     }
