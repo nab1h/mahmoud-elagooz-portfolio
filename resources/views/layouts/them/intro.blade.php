@@ -21,7 +21,7 @@
 
             <div class="s-header__block">
                 <div class="s-header__logo">
-                    <a class="logo" href="index.html">
+                    <a class="logo" href="#top">
                         <img src="{{ asset('them/images/logo.svg') }}" alt="Homepage">
                     </a>
                 </div>

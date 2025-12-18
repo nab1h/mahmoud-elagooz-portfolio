@@ -7,7 +7,7 @@
     ================================================== -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hudson</title>
+    <title>Elagooz</title>
 
     <script>
         document.documentElement.classList.remove('no-js');
@@ -64,26 +64,34 @@
         /* بيحسن سلاسة السحب */
     }
 
-    .card-visuals {
-        position: relative;
-        height: 450px;
-        /* الارتفاع اللي عجبك */
-        background: #000;
-        overflow: hidden;
-    }
+.card-visuals {
+    position: relative;
+    overflow: hidden;
+    height: 300px; /* أو حسب تصميمك */
+}
 
-    .card-visuals img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: none;
-        pointer-events: none;
-        /* عشان الصورة متعكسش السحب */
-    }
+.card-visuals img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    
+    /* جعل الصور مخفية تماماً وشفافة */
+    opacity: 0;
+    visibility: hidden;
+    
+    /* إضافة وقت التحريك (0.5 ثانية) */
+    transition: opacity 0.6s ease-in-out, visibility 0.6s;
+}
 
-    .card-visuals img.active {
-        display: block;
-    }
+/* عندما تأخذ الصورة كلاس active تظهر بنعومة */
+.card-visuals img.active {
+    opacity: 1;
+    visibility: visible;
+    position: relative; /* لتأخذ الصورة النشطة مساحة الحاوية */
+}
 
     /* إخفاء الأسهم في الموبايل عشان نعتمد على السحب */
     .nav-btn {
@@ -168,6 +176,56 @@
         min-height: 10px;
         resize: vertical;
     }
+ .ss-go-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+    
+    /* الخصائص المسؤولة عن الإخفاء */
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s ease-in-out; 
+    transform: translateY(20px); /* حركة بسيطة لأسفل وهو مخفي */
+}
+
+/* الكلاس الذي سيتم إضافته بواسطة JS */
+.ss-go-top.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0); /* يعود لمكانه الطبيعي عند الظهور */
+}
+
+.ss-go-top a {
+    background-color: #000; /* خلفية سوداء */
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;      /* جعله دائرياً */
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+/* السهم الأصلي يشير لليمين، هنا سنلفه للأعلى */
+.ss-go-top a svg {
+    fill: #ffffff !important; /* لون السهم أبيض */
+    transform: rotate(-90deg); /* لف السهم للأعلى */
+}
+
+.ss-go-top span {
+    font-size: 10px;
+    color: #000;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+/* حركة بسيطة عند تمرير الماوس */
+.ss-go-top a:hover {
+    background-color: #333;
+    transform: translateY(-5px);
+}
 </style>
 
 <body id="top">
@@ -358,7 +416,7 @@
 
             <div class="column xl-6 lg-12">
                 <p class="ss-copyright">
-                    <span>© Copyright Hudson 2026</span>
+                    <span>© Copyright Nabih Alashmawy 2026</span>
                     <span>Design by <a href="https://nabih-alashmawy.online">Nabih Alashmawy</a> Distribution by <a
                             href="https://nabih-alashmawy.online">Nabih Alashmawy</a></span>
                 </p>

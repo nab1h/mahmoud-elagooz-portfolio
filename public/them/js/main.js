@@ -294,7 +294,16 @@
         });
 
     }; // end ssMoveTo
-
+window.addEventListener('scroll', function() {
+    const goTopButton = document.querySelector('.ss-go-top');
+    
+    // يظهر الزر بعد النزول لمسافة 600 بكسل (تقريباً بعد أول سيكشن)
+    if (window.scrollY > 600) {
+        goTopButton.classList.add('is-visible');
+    } else {
+        goTopButton.classList.remove('is-visible');
+    }
+});
 
    /* Initialize
     * ------------------------------------------------------ */
