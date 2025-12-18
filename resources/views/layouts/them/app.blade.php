@@ -158,7 +158,6 @@
 
     .project-info-text {
         font-size: 1.60rem;
-        /* الحجم اللي طلبته عشان يكون واضح */
         color: var(--gray);
         line-height: 1.6;
         border-top: 1px solid #eee;
@@ -169,16 +168,6 @@
         min-height: 10px;
         resize: vertical;
     }
-
-
-
-.s-header__logo img {
-    height: 100%;       /* ليأخذ طول الهيدر */
-    max-height: 50px;   /* جرب تغيير هذا الرقم (50 أو 60) حتى يناسب الهيدر الخاص بك */
-    width: auto;        /* للحفاظ على الأبعاد صحيحة */
-    display: block;
-    object-fit: contain; /* لضمان عدم تمدد اللوجو بشكل سيء */
-}
 </style>
 
 <body id="top">
@@ -378,7 +367,7 @@
         </div> <!-- end section-footer__bottom -->
 
         <div class="ss-go-top">
-            <a class="smoothscroll" title="Back to Top" href="#top">
+            <a class="smoothscroll" title="Back to Top" href="#top" >
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                     style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
                     <path
