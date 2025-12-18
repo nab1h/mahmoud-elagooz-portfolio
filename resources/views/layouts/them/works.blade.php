@@ -9,107 +9,31 @@
     </div>
 
     <div class="projects-wrapper">
+    @foreach($projects as $project)
         <div class="modern-card" ontouchstart="handleTouchStart(event)" ontouchend="handleTouchEnd(event, this)">
-
             <div class="card-visuals">
                 <button class="nav-btn prev" onclick="slide(this, -1)">&#10094;</button>
-                <img src="{{ asset('them/images/folio/grayscale@2x.jpg') }}" class="active">
-                <img src="{{ asset('them/images/folio/caffeine_and_tulips.jpg') }}">
-                <img src="{{ asset('them/images/folio/grayscale@2x.jpg') }}">
+                <img src="{{ asset('storage/' . $project->photo_1) }}" alt="{{ $project->name }}" class="active">
+                <img src="{{ asset('storage/' . $project->photo_2) }}" alt="{{ $project->name }}">
+                <img src="{{ asset('storage/' . $project->photo_3) }}" alt="{{ $project->name }}">
                 <button class="nav-btn next" onclick="slide(this, 1)">&#10095;</button>
             </div>
-
             <div class="card-content">
                 <div class="content-top">
                     <div class="brand-logo-container">
-                        <img src="{{ asset('them/images/folio/white_turban@2x.jpg') }}">
+                        <img src="{{ asset('storage/' . $project->photo_brand) }}" alt="{{ $project->brand_name }}">
                     </div>
                     <div class="text-stack">
-                        <h3 class="project-name-display">Project Title</h3>
-                        <span class="brand-name-display">Brand Name</span>
+                        <h3 class="project-name-display">{{ $project->name }}</h3>
+                        <span class="brand-name-display">{{ $project->brand_name }}</span>
                     </div>
                 </div>
                 <p class="project-info-text">
-                    النص هنا واضح ومريح للعين، والكرت بياخد وضعه في الشاشة.
+                    {{ Str::limit($project->description, 100) }}
                 </p>
             </div>
         </div>
-        <div class="modern-card" ontouchstart="handleTouchStart(event)" ontouchend="handleTouchEnd(event, this)">
-
-            <div class="card-visuals">
-                <button class="nav-btn prev" onclick="slide(this, -1)">&#10094;</button>
-                <img src="{{ asset('them/images/folio/grayscale@2x.jpg') }}" class="active">
-                <img src="{{ asset('them/images/folio/caffeine_and_tulips.jpg') }}">
-                <img src="{{ asset('them/images/folio/grayscale@2x.jpg') }}">
-                <button class="nav-btn next" onclick="slide(this, 1)">&#10095;</button>
-            </div>
-
-            <div class="card-content">
-                <div class="content-top">
-                    <div class="brand-logo-container">
-                        <img src="{{ asset('them/images/folio/white_turban@2x.jpg') }}">
-                    </div>
-                    <div class="text-stack">
-                        <h3 class="project-name-display">Project Title</h3>
-                        <span class="brand-name-display">Brand Name</span>
-                    </div>
-                </div>
-                <p class="project-info-text">
-                    النص هنا واضح ومريح للعين، والكرت بياخد وضعه في الشاشة.
-                </p>
-            </div>
-        </div>
-
-        <div class="modern-card" ontouchstart="handleTouchStart(event)" ontouchend="handleTouchEnd(event, this)">
-
-            <div class="card-visuals">
-                <button class="nav-btn prev" onclick="slide(this, -1)">&#10094;</button>
-                <img src="{{ asset('them/images/folio/grayscale@2x.jpg') }}" class="active">
-                <img src="{{ asset('them/images/folio/caffeine_and_tulips.jpg') }}">
-                <img src="{{ asset('them/images/folio/grayscale@2x.jpg') }}">
-                <button class="nav-btn next" onclick="slide(this, 1)">&#10095;</button>
-            </div>
-
-            <div class="card-content">
-                <div class="content-top">
-                    <div class="brand-logo-container">
-                        <img src="{{ asset('them/images/folio/white_turban@2x.jpg') }}">
-                    </div>
-                    <div class="text-stack">
-                        <h3 class="project-name-display">Project Title</h3>
-                        <span class="brand-name-display">Brand Name</span>
-                    </div>
-                </div>
-                <p class="project-info-text">
-                    النص هنا واضح ومريح للعين، والكرت بياخد وضعه في الشاشة.
-                </p>
-            </div>
-        </div>
-        <div class="modern-card" ontouchstart="handleTouchStart(event)" ontouchend="handleTouchEnd(event, this)">
-
-            <div class="card-visuals">
-                <button class="nav-btn prev" onclick="slide(this, -1)">&#10094;</button>
-                <img src="{{ asset('them/images/folio/grayscale@2x.jpg') }}" class="active">
-                <img src="{{ asset('them/images/folio/caffeine_and_tulips.jpg') }}">
-                <img src="{{ asset('them/images/folio/grayscale@2x.jpg') }}">
-                <button class="nav-btn next" onclick="slide(this, 1)">&#10095;</button>
-            </div>
-
-            <div class="card-content">
-                <div class="content-top">
-                    <div class="brand-logo-container">
-                        <img src="{{ asset('them/images/folio/white_turban@2x.jpg') }}">
-                    </div>
-                    <div class="text-stack">
-                        <h3 class="project-name-display">Project Title</h3>
-                        <span class="brand-name-display">Brand Name</span>
-                    </div>
-                </div>
-                <p class="project-info-text">
-                    النص هنا واضح ومريح للعين، والكرت بياخد وضعه في الشاشة.
-                </p>
-            </div>
-        </div>
+    @endforeach
     </div>
 
 
@@ -146,7 +70,8 @@
                 <div class="swiper-wrapper">
                     {{-- نقوم بفلترة المجموعة لعرض العناصر التي تحتوي على star بقيمة 1 فقط --}}
                     @forelse ($testimonials->where('is_favorite', 1) as $testimonial)
-                        <div class="s-testimonials__slide swiper-slide" style="text-align: left; justify-content: flex-start;">
+                        <div class="s-testimonials__slide swiper-slide"
+                            style="text-align: left; justify-content: flex-start;">
                             <div class="s-testimonials__author">
                                 <cite class="s-testimonials__cite" style="text-align: left;">
                                     <strong style="display: block;">{{ $testimonial->name }}</strong>
@@ -157,9 +82,9 @@
                                 {{ Str::limit($testimonial->message, 500) }}
                             </p>
                     </div> @empty
-                            <div class="swiper-slide text-center">
-                                <p>No featured testimonials found.</p>
-                            </div>
+                        <div class="swiper-slide text-center">
+                            <p>No featured testimonials found.</p>
+                        </div>
                     @endforelse
                 </div>
             </div> <!-- end swiper-wrapper -->

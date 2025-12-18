@@ -169,6 +169,16 @@
         min-height: 10px;
         resize: vertical;
     }
+
+
+
+.s-header__logo img {
+    height: 100%;       /* ليأخذ طول الهيدر */
+    max-height: 50px;   /* جرب تغيير هذا الرقم (50 أو 60) حتى يناسب الهيدر الخاص بك */
+    width: auto;        /* للحفاظ على الأبعاد صحيحة */
+    display: block;
+    object-fit: contain; /* لضمان عدم تمدد اللوجو بشكل سيء */
+}
 </style>
 
 <body id="top">
