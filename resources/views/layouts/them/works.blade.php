@@ -1,5 +1,4 @@
 <section id="works" class="s-works target-section">
-
     <div class="row">
         <div class="column xl-12">
             <div class="section-header" data-num="02">
@@ -7,7 +6,6 @@
             </div> <!-- end section-header -->
         </div>
     </div>
-
     <div class="projects-wrapper">
         @foreach($projects as $project)
             <div class="modern-card" ontouchstart="handleTouchStart(event)" ontouchend="handleTouchEnd(event, this)">
@@ -35,12 +33,9 @@
             </div>
         @endforeach
     </div>
-
-
     <script>
         let xDown = null;
         function handleTouchStart(evt) { xDown = evt.touches[0].clientX; }
-
         function handleTouchEnd(evt, card) {
             if (!xDown) return;
             let xUp = evt.changedTouches[0].clientX;
@@ -50,7 +45,14 @@
             }
             xDown = null;
         }
-
+        function slide(btn, dir) {
+            const container = btn.parentElement;
+            const imgs = container.querySelectorAll('img');
+            let curr = Array.from(imgs).findIndex(i => i.classList.contains('active'));
+            imgs[curr].classList.remove('active');
+            curr = (curr + dir + imgs.length) % imgs.length;
+            imgs[curr].classList.add('active');
+        }
         function slide(btn, dir) {
             const container = btn.parentElement;
             const imgs = container.querySelectorAll('img');
@@ -60,48 +62,22 @@
             imgs[curr].classList.add('active');
         }
 
-        function slide(btn, dir) {
-            const container = btn.parentElement;
-            const imgs = container.querySelectorAll('img');
-
-            // 1. البحث عن الصورة الحالية
-            let curr = Array.from(imgs).findIndex(i => i.classList.contains('active'));
-
-            // 2. إزالة الكلاس النشط (سيبدأ تأثير الـ CSS في إخفائها بنعومة)
-            imgs[curr].classList.remove('active');
-
-            // 3. حساب الصورة التالية
-            curr = (curr + dir + imgs.length) % imgs.length;
-
-            // 4. إضافة الكلاس النشط للصورة الجديدة (ستظهر بنعومة)
-            imgs[curr].classList.add('active');
-        }
-
-        // وظيفة لتشغيل السليدر تلقائياً
         function startAutoplay() {
-            // نبحث عن كل أزرار "التالي" في الصفحة
             const nextButtons = document.querySelectorAll('.nav-btn.next');
 
             nextButtons.forEach(btn => {
-                // نضبط موقتاً يعمل كل 4 ثواني (4000 ملي ثانية)
                 setInterval(() => {
-                    slide(btn, 1); // يستدعي وظيفة التغيير ناحية اليمين
+                    slide(btn, 1);
                 }, 3000);
             });
         }
-
-        // تشغيل الوظيفة عند تحميل الصفحة
         document.addEventListener('DOMContentLoaded', startAutoplay);
     </script>
     <div class="row s-testimonials">
         <div class="column xl-12">
-
             <h3 class="s-testimonials__header">Hear it from My Happy Clients</h3>
-
             <div class="swiper-container s-testimonials__slider">
-
                 <div class="swiper-wrapper">
-                    {{-- نقوم بفلترة المجموعة لعرض العناصر التي تحتوي على star بقيمة 1 فقط --}}
                     @forelse ($testimonials->where('is_favorite', 1) as $testimonial)
                         <div class="s-testimonials__slide swiper-slide"
                             style="text-align: left; justify-content: flex-start;">

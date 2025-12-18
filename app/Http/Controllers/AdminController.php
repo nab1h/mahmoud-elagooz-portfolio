@@ -10,21 +10,12 @@ class AdminController extends Controller
     {
         return view('dashboard.index');
     }
-
-
-
     public function client()
     {
         return view('dashboard.client');
     }
-
     public function login()
     {
         return view('dashboard.login');
     }
-
-    
-
-
-
 }

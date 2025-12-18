@@ -1,5 +1,4 @@
     <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
-        
         <ul class="nav menu">
             <li class="active"><a href="{{route('admin.dashboard') }}"><em class="fa fa-dashboard">&nbsp;</em> Edite Content page</a></li>
             <li><a href="{{route('experiences.index') }}"><em class="fa fa-bar-chart">&nbsp;</em> Cv</a></li>

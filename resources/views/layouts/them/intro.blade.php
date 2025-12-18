@@ -1,5 +1,4 @@
-<!-- preloader
-    ================================================== -->
+
 <div id="preloader">
     <div id="loader" class="dots-fade">
         <div></div>
@@ -7,15 +6,7 @@
         <div></div>
     </div>
 </div>
-
-
-<!-- page wrap
-    ================================================== -->
 <div id="page" class="s-pagewrap">
-
-
-    <!-- # site header 
-        ================================================== -->
     <header class="s-header">
         <div class="row s-header__inner">
 
@@ -25,10 +16,8 @@
                         <img src="{{ asset('them/images/logo.svg') }}" alt="Homepage">
                     </a>
                 </div>
-
                 <a class="s-header__menu-toggle" href="#0"><span>Menu</span></a>
             </div> <!-- end s-header__block -->
-
             <nav class="s-header__nav">
                 <ul class="s-header__menu-links">
                     <li class="current"><a class="smoothscroll" href="#intro">Intro</a></li>
@@ -42,8 +31,6 @@
     </header> <!-- end s-header -->
 
 
-    <!-- # intro
-        ================================================== -->
     <section id="intro" class="s-intro target-section">
 
         <div class="row s-intro__content width-sixteen-col">

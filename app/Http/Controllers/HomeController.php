@@ -18,8 +18,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-
-        $settings = Setting::pluck('value', 'key'); // لاحظ الـ S في الأخر
+        $settings = Setting::pluck('value', 'key');
         $projects = project::latest()->get();
         $experiences = Experience::all();
         $skills = Skill::all();
@@ -28,8 +27,6 @@ class HomeController extends Controller
         $awards = Award::all();
         $links = Link::all();
         $cvFile = CvFile::latest()->first();
-
-
         return view('hero', compact(
             'settings',
             'projects',

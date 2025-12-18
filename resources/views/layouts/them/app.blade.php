@@ -39,20 +39,16 @@
     .projects-wrapper {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        /* كرتين في اللارج */
         gap: 30px;
         padding: 40px 5%;
         background-color: var(--bg);
     }
-
-    /* 📱 تعديل الموبايل والميديم: كرت واحد فقط */
     @media (max-width: 991px) {
         .projects-wrapper {
             grid-template-columns: 1fr;
             padding: 20px 15px;
         }
     }
-
     .modern-card {
         background: #fff;
         border-radius: var(--radius);
@@ -61,13 +57,12 @@
         transition: transform 0.3s ease;
         position: relative;
         touch-action: pan-y;
-        /* بيحسن سلاسة السحب */
     }
 
 .card-visuals {
     position: relative;
     overflow: hidden;
-    height: 300px; /* أو حسب تصميمك */
+    height: 300px;
 }
 
 .card-visuals img {
@@ -77,23 +72,16 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    
-    /* جعل الصور مخفية تماماً وشفافة */
     opacity: 0;
     visibility: hidden;
-    
-    /* إضافة وقت التحريك (0.5 ثانية) */
     transition: opacity 0.6s ease-in-out, visibility 0.6s;
 }
 
-/* عندما تأخذ الصورة كلاس active تظهر بنعومة */
 .card-visuals img.active {
     opacity: 1;
     visibility: visible;
-    position: relative; /* لتأخذ الصورة النشطة مساحة الحاوية */
+    position: relative;
 }
-
-    /* إخفاء الأسهم في الموبايل عشان نعتمد على السحب */
     .nav-btn {
         position: absolute;
         top: 50%;
@@ -181,37 +169,33 @@
     bottom: 30px;
     right: 30px;
     z-index: 1000;
-    
-    /* الخصائص المسؤولة عن الإخفاء */
     opacity: 0;
     visibility: hidden;
     transition: all 0.5s ease-in-out; 
-    transform: translateY(20px); /* حركة بسيطة لأسفل وهو مخفي */
+    transform: translateY(20px);
 }
 
-/* الكلاس الذي سيتم إضافته بواسطة JS */
 .ss-go-top.is-visible {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0); /* يعود لمكانه الطبيعي عند الظهور */
+    transform: translateY(0);
 }
 
 .ss-go-top a {
-    background-color: #000; /* خلفية سوداء */
+    background-color: #000;
     width: 50px;
     height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;      /* جعله دائرياً */
+    border-radius: 50%;
     transition: 0.3s;
     text-decoration: none;
 }
 
-/* السهم الأصلي يشير لليمين، هنا سنلفه للأعلى */
 .ss-go-top a svg {
-    fill: #ffffff !important; /* لون السهم أبيض */
-    transform: rotate(-90deg); /* لف السهم للأعلى */
+    fill: #ffffff !important;
+    transform: rotate(-90deg);
 }
 
 .ss-go-top span {
@@ -221,24 +205,42 @@
     font-weight: bold;
 }
 
-/* حركة بسيطة عند تمرير الماوس */
 .ss-go-top a:hover {
     background-color: #333;
     transform: translateY(-5px);
 }
 </style>
-
 <body id="top">
+
+
+
+
+
+
+
+
+
+
     @include('layouts.them.intro')
     @include('layouts.them.about')
     @include('layouts.them.works')
     @include('layouts.them.numbers')
     @yield('content')
 
-    <!-- # footer 
-        ================================================== -->
-    <footer id="footer" class="s-footer target-section">
 
+
+
+
+
+
+
+
+
+
+
+
+
+    <footer id="footer" class="s-footer target-section">
         <div class="row">
             <div class="column lg-12">
                 <div class="section-header light-on-dark" data-num="03">
@@ -246,15 +248,12 @@
                 </div> <!-- end section-header -->
             </div>
         </div>
-
         <div class="row s-footer__content">
-
             <div class="column xl-6 md-12 s-footer__block s-footer__about">
                 <p class="attention-getter">
                     {{ $settings['footer'] ?? '' }}
                 </p>
             </div> <!-- end section-footer__about -->
-
             <div class="column xl-6 md-12 s-footer__block s-footer__site-links">
                 <div class="row">
                     <div class="column xl-4 lg-5 md-6 tab-12">
@@ -270,32 +269,29 @@
                     <div class="column xl-7 md-6 tab-12">
                         <h5>Contact Me</h5>
                         <ul class="link-list">
-
                             <li>
-    @php 
-        $siteUrl = $links->where('name', 'website')->first()->url ?? $links->where('name', 'wepsite')->first()->url ?? '';
-    @endphp
+                                    @php 
+                                        $siteUrl = $links->where('name', 'website')->first()->url ?? $links->where('name', 'wepsite')->first()->url ?? '';
+                                    @endphp
 
-    @if($siteUrl)
-        <a href="{{ str_starts_with($siteUrl, 'http') ? $siteUrl : 'https://' . $siteUrl }}" target="_blank">
-            {{ $siteUrl }}
-        </a>
-    @endif
-</li>
-                                                    <li>
-                                                        @php 
-                                                            $phone = $links->where('name', 'phone')->first()->url ?? ''; 
-                                                        @endphp
-        <a href="tel:+2{{ $phone }}">+2{{ $phone }}</a>
-    </li>
+                                    @if($siteUrl)
+                                        <a href="{{ str_starts_with($siteUrl, 'http') ? $siteUrl : 'https://' . $siteUrl }}" target="_blank">
+                                            {{ $siteUrl }}
+                                        </a>
+                                    @endif
+                            </li>
+                            <li>
+                                    @php 
+                                        $phone = $links->where('name', 'phone')->first()->url ?? ''; 
+                                    @endphp
+                                        <a href="tel:+2{{ $phone }}">+2{{ $phone }}</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
             </div> <!-- end section-footer__site-links -->
 
         </div> <!-- end section-footer__content -->
-
-
         <div class="row s-footer__contact-form">
             <div class="column xl-12">
                 <div class="form-field">
@@ -308,27 +304,21 @@
                 </div>
             </div>
         </div>
-
         <div class="row s-footer__buttons">
             <div class="column xl-6 tab-12">
                 <button id="submitAjax" class="btn btn--primary btn--large u-fullwidth">Send Message</button>
             </div>
-
             <div class="column xl-6 tab-12">
                 <a href="{{ route('cv_file.download') }}" class="btn btn--stroke btn--large u-fullwidth">Get My CV</a>
             </div>
         </div>
-
         <div id="formResponse" style="margin-top: 15px; text-align: center; display: none;"></div>
         <script>
             document.getElementById('submitAjax').addEventListener('click', function (e) {
                 e.preventDefault();
-
                 const name = document.getElementById('contactName').value;
-                const message = document.getElementById('contactMessage').value; // غيرنا المتغير لـ message
-
+                const message = document.getElementById('contactMessage').value;
                 console.log("Sending Data:", { name, message });
-
                 fetch("{{ route('testimonials.store') }}", {
                     method: "POST",
                     headers: {
@@ -360,7 +350,6 @@
             });
         </script>
         <div class="row s-footer__bottom">
-
             <div class="column xl-6 lg-12">
                 <ul class="s-footer__social social-list">
                     <li>
@@ -435,18 +424,12 @@
             </a>
             <span>Back To Top</span>
         </div> <!-- end ss-go-top -->
-
     </footer> <!-- end s-footer -->
-
     </div> <!-- end page-wrap -->
-
-
     <!-- Java Script
     ================================================== -->
     <script src="{{ asset('them/js/plugins.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="{{ asset('them/js/main.js') }}"></script>
-
 </body>
-
 </html>

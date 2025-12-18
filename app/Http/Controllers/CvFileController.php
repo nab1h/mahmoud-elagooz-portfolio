@@ -13,7 +13,7 @@ class CvFileController extends Controller
     {
 
         $validated = $request->validate([
-            'cv_file' => 'required|file|mimes:pdf|max:5120', 
+            'cv_file' => 'required|file|mimes:pdf|max:5120',
         ]);
 
         if ($request->hasFile('cv_file')) {
@@ -21,7 +21,7 @@ class CvFileController extends Controller
             $fileName = time() . '_' . $request->file('cv_file')->getClientOriginalName();
 
             $request->file('cv_file')->storeAs('public/cv_files', $fileName);
-            
+
             CvFile::truncate();
 
             CvFile::create([
@@ -30,24 +30,20 @@ class CvFileController extends Controller
             ]);
         }
 
-        return redirect()->route('experiences.index') 
+        return redirect()->route('experiences.index')
             ->with('cv_success', 'تم رفع ملف السيرة الذاتية بنجاح!');
     }
 
     public function download()
     {
         $cvFile = CvFile::latest()->first();
-
         if (!$cvFile) {
             return redirect()->back()->with('error', 'لا يوجد ملف سيرة ذاتية مرفوع حالياً للتنزيل.');
         }
-
         $filePath = 'public/cv_files/' . $cvFile->file_name;
-        
         if (!Storage::exists($filePath)) {
             return redirect()->back()->with('error', 'الملف غير موجود على السيرفر.');
         }
-
         return Storage::download($filePath, $cvFile->display_name);
     }
 }

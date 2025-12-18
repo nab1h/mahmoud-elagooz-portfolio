@@ -1,34 +1,29 @@
 @extends('layouts.dashboard')
 @section('title', 'Links')
-
 @section('content')
-@if ($errors->any())
-    <div class="alert alert-danger" role="alert">
-        <h5>⚠️ فشل التحقق من صحة البيانات:</h5>
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+	@if ($errors->any())
+		<div class="alert alert-danger" role="alert">
+			<h5>⚠️ فشل التحقق من صحة البيانات:</h5>
+			<ul>
+				@foreach ($errors->all() as $error)
+					<li>{{ $error }}</li>
+				@endforeach
+			</ul>
+		</div>
+	@endif
 	<div class="row">
 		<div class="col-lg-12">
 			<form action="{{ route('links.update') }}" method="POST">
 				@csrf
 				@method('PATCH')
-
 				<h5 class="mb-3">Social Media Links</h5>
 				<hr>
-
 				@php
-					// دالة مساعدة لجلب قيمة الـ URL بناءً على اسم المنصة
 					function getLinkUrl($links, $name)
 					{
 						return $links->where('name', $name)->first()->url ?? '';
 					}
 				@endphp
-
 				<div class="mb-4">
 					<label for="facebook_url" class="form-label">Facebook URL</label>
 					<div class="input-group">
@@ -44,27 +39,22 @@
 							name="twitter_url" placeholder="https://twitter.com/username" />
 					</div>
 				</div>
-
 				<br>
-
 				<div class="mb-4">
 					<label for="twitter_url" class="form-label">Instagram URL</label>
 					<div class="input-group">
-						<input id="instagram_url" value="{{ getLinkUrl($links, 'instagram') }}" type="text" class="form-control"
-							name="instagram_url" placeholder="https://instagram.com/username" />
+						<input id="instagram_url" value="{{ getLinkUrl($links, 'instagram') }}" type="text"
+							class="form-control" name="instagram_url" placeholder="https://instagram.com/username" />
 					</div>
 				</div>
-
 				<br>
-
 				<div class="mb-4">
 					<label for="pintrest_url" class="form-label">Pintrest URL</label>
 					<div class="input-group">
-						<input id="pintrest_url" value="{{ getLinkUrl($links, 'pintrest') }}" type="text" class="form-control"
-							name="pintrest_url" placeholder="https://pintrest.com/username" />
+						<input id="pintrest_url" value="{{ getLinkUrl($links, 'pintrest') }}" type="text"
+							class="form-control" name="pintrest_url" placeholder="https://pintrest.com/username" />
 					</div>
 				</div>
-
 				<br>
 				<div class="mb-4">
 					<label for="wepsite_url" class="form-label">Wepsite URL</label>
@@ -73,17 +63,15 @@
 							name="wepsite_url" placeholder="https://wepsite.com/" />
 					</div>
 				</div>
-
 				<br>
 				<div class="mb-4">
 					<label for="twitter_url" class="form-label">Linkedin URL</label>
 					<div class="input-group">
-						<input id="linkedin_url" value="{{ getLinkUrl($links, 'linkedin') }}" type="text" class="form-control"
-							name="linkedin_url" placeholder="https://linkedin.com/username" />
+						<input id="linkedin_url" value="{{ getLinkUrl($links, 'linkedin') }}" type="text"
+							class="form-control" name="linkedin_url" placeholder="https://linkedin.com/username" />
 					</div>
 				</div>
 				<br>
-			
 				<div class="mb-4">
 					<label for="phone_url" class="form-label">Phone Number</label>
 					<div class="input-group">
@@ -99,7 +87,7 @@
 		</div>
 	</div><!-- /.col-->
 	<div class="col-sm-12">
-		<p class="back-link">Lumino Theme by <a href="https://www.facebook.com/nab1h">Nabih Alashmawy</a></p>
+		<p class="back-link">Nabih Alashmawy<a href="https://nabih-alashmawy.online">Nabih Alashmawy</a></p>
 	</div>
 	</div><!-- /.row -->
 	</div><!--/.main-->
