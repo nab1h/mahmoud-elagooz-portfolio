@@ -71,7 +71,7 @@ Route::middleware('auth')->group(function () {
     // Other Resources
     Route::resource('experiences', ExperiencesController::class);
     Route::resource('admin/cv-file', CvFileController::class)->only(['index', 'store'])->names('cv_file');
-    Route::get('admin/cv_files/download', [CvFileController::class, 'download'])->name('cv_file.download');
+    
     Route::resource('admin/awards', AwardController::class)->names('awards');
     Route::resource('admin/skills', SkillController::class)->names('skills');
     Route::resource('admin/statistics', StatisticController::class)->names('statistics');
@@ -81,3 +81,4 @@ Route::middleware('auth')->group(function () {
     Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
     Route::put('/settings', [SettingController::class, 'update'])->name('settings.update');
 });
+Route::get('admin/cv_files/download', [CvFileController::class, 'download'])->name('cv_file.download');

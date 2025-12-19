@@ -13,16 +13,16 @@
 <form method="POST" action="{{ route('password.update') }}">
     @csrf
 
-    <input type="password" name="old_password" placeholder="كلمة المرور القديمة" required>
+    <input type="password" name="old_password" placeholder="Old Password" required>
     <br><br>
 
-    <input type="password" name="new_password" placeholder="كلمة المرور الجديدة" required>
+    <input type="password" name="new_password" placeholder="New Password" required>
     <br><br>
 
-    <input type="password" name="new_password_confirmation" placeholder="تأكيد كلمة المرور" required>
+    <input type="password" name="new_password_confirmation" placeholder="Confierm New Password" required>
     <br><br>
 
-    <button type="submit">تحديث كلمة المرور</button>
+    <button type="submit">Up Date New Password</button>
 </form>
 
 @if ($errors->any())
