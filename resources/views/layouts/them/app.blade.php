@@ -319,7 +319,7 @@
                 const name = document.getElementById('contactName').value;
                 const message = document.getElementById('contactMessage').value;
                 console.log("Sending Data:", { name, message });
-                fetch("{{ route('testimonials.store') }}", {
+                fetch("{{ route('contact.send') }}", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",

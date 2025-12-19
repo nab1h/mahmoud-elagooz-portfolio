@@ -82,3 +82,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/settings', [SettingController::class, 'update'])->name('settings.update');
 });
 Route::get('admin/cv_files/download', [CvFileController::class, 'download'])->name('cv_file.download');
+
+
+Route::post('/contact', [HomeController::class, 'sendMessage'])
+    ->name('contact.send');

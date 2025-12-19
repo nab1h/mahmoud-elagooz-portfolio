@@ -39,4 +39,26 @@ class HomeController extends Controller
             'cvFile'
         ));
     }
+
+    public function sendMessage(Request $request)
+    {
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'message' => 'required|string|max:2000',
+            'job_title' => 'nullable|string|max:255',
+        ]);
+
+        Testimonial::create([
+            'name' => $data['name'],
+            'message' => $data['message'],
+            'job_title' => $data['job_title'] ?? 'Client',
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'تم الإرسال بنجاح'
+        ]);
+    }
+
+
 }
