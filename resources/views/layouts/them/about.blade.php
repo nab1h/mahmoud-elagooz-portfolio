@@ -1,4 +1,4 @@
-<section id="about" class="s-about target-section">
+<section id="about" class="s-about target-section" >
     <div class="row s-about__content">
         <div class="column xl-12">
             <div class="section-header" data-num="01">

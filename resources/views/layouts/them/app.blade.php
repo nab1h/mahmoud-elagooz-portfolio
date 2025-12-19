@@ -43,12 +43,14 @@
         padding: 40px 5%;
         background-color: var(--bg);
     }
+
     @media (max-width: 991px) {
         .projects-wrapper {
             grid-template-columns: 1fr;
             padding: 20px 15px;
         }
     }
+
     .modern-card {
         background: #fff;
         border-radius: var(--radius);
@@ -59,29 +61,30 @@
         touch-action: pan-y;
     }
 
-.card-visuals {
-    position: relative;
-    overflow: hidden;
-    height: 300px;
-}
+    .card-visuals {
+        position: relative;
+        overflow: hidden;
+        height: 300px;
+    }
 
-.card-visuals img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.6s ease-in-out, visibility 0.6s;
-}
+    .card-visuals img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.6s ease-in-out, visibility 0.6s;
+    }
 
-.card-visuals img.active {
-    opacity: 1;
-    visibility: visible;
-    position: relative;
-}
+    .card-visuals img.active {
+        opacity: 1;
+        visibility: visible;
+        position: relative;
+    }
+
     .nav-btn {
         position: absolute;
         top: 50%;
@@ -164,52 +167,55 @@
         min-height: 10px;
         resize: vertical;
     }
- .ss-go-top {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    z-index: 1000;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.5s ease-in-out; 
-    transform: translateY(20px);
-}
 
-.ss-go-top.is-visible {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
+    .ss-go-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.5s ease-in-out;
+        transform: translateY(20px);
+    }
 
-.ss-go-top a {
-    background-color: #000;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    transition: 0.3s;
-    text-decoration: none;
-}
+    .ss-go-top.is-visible {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
 
-.ss-go-top a svg {
-    fill: #ffffff !important;
-    transform: rotate(-90deg);
-}
+    .ss-go-top a {
+        background-color: #000;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: 0.3s;
+        text-decoration: none;
+    }
 
-.ss-go-top span {
-    font-size: 10px;
-    color: #000;
-    text-transform: uppercase;
-    font-weight: bold;
-}
+    .ss-go-top a svg {
+        fill: #ffffff !important;
+        transform: rotate(-90deg);
+    }
 
-.ss-go-top a:hover {
-    background-color: #333;
-    transform: translateY(-5px);
-}
+    .ss-go-top span {
+        font-size: 10px;
+        color: #000;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+
+    .ss-go-top a:hover {
+        background-color: #333;
+        transform: translateY(-5px);
+    }
 </style>
+
+
 <body id="top">
 
 
@@ -261,7 +267,8 @@
                         <ul class="link-list">
                             <li><a href="{{ $links->where('name', 'facebook')->first()->url ?? '#' }}">Facebook</a></li>
                             <li><a href="{{ $links->where('name', 'twiter')->first()->url ?? '#' }}">Twitter</a></li>
-                            <li><a href="{{ $links->where('name', 'instagram')->first()->url ?? '#' }}">Instagram</a></li>
+                            <li><a href="{{ $links->where('name', 'instagram')->first()->url ?? '#' }}">Instagram</a>
+                            </li>
                             <li><a href="{{ $links->where('name', 'wepsite')->first()->url ?? '#' }}">Dribbble</a></li>
                             <li><a href="{{ $links->where('name', 'linkedin')->first()->url ?? '#' }}">Linkedin</a></li>
                         </ul>
@@ -270,17 +277,17 @@
                         <h5>Contact Me</h5>
                         <ul class="link-list">
                             <li>
-                                    @php 
-                                        $siteUrl = $links->where('name', 'website')->first()->url ?? $links->where('name', 'wepsite')->first()->url ?? '';
-                                    @endphp
+                                @php 
+                                    $siteUrl = $links->where('name', 'website')->first()->url ?? $links->where('name', 'wepsite')->first()->url ?? '';
+                                @endphp
 
-                                    @if($siteUrl)
-                                        <a href="{{ str_starts_with($siteUrl, 'http') ? $siteUrl : 'https://' . $siteUrl }}" target="_blank">
-                                            {{ $siteUrl }}
-                                        </a>
-                                    @endif
-                            </li>
-                            <li>
+                                                               @if($siteUrl)
+                                                                <a href="{{ str_starts_with($siteUrl, 'http') ? $siteUrl : 'https://' . $siteUrl }}" target="_blank">
+                                                                        {{ $siteUrl }}
+                                                                        </a>
+                                                            @endif
+                        </li>
+                    <li>
                                     @php 
                                         $phone = $links->where('name', 'phone')->first()->url ?? ''; 
                                     @endphp
@@ -429,7 +436,7 @@
     <!-- Java Script
     ================================================== -->
     <script src="{{ asset('them/js/plugins.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="{{ asset('them/js/main.js') }}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+        <script src="{{ asset('them/js/main.js') }}"></script>
 </body>
 </html>
