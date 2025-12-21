@@ -19,7 +19,7 @@ class HomeController extends Controller
     public function index()
     {
         $settings = Setting::pluck('value', 'key');
-        $projects = project::latest()->get();
+        $projects = Project::latest()->get();
         $experiences = Experience::all();
         $skills = Skill::all();
         $statistics = Statistic::all();
